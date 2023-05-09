@@ -1,0 +1,29 @@
+---
+title: "old_heatmap"
+author: "Sam Rozal"
+date: "2023-05-04"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#attach packages
+library(tidyverse)
+library(here)
+library(janitor)
+library(plotly)
+library(lubridate)
+library(kableExtra)
+library(readxl)
+
+gdrive_data <- "G:/My Drive"
+
+```
+
+```{r}
+#read in the data 
+
+slr_projections_old <- read_csv(here(gdrive_data, "/Sea_level_rise_projections.xlsx"))
+
+```
+
