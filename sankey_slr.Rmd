@@ -1,0 +1,43 @@
+---
+title: "slr_sankey"
+author: "Sam Rozal"
+date: "2023-05-29"
+output: html_document
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+#attach packages
+library(tidyverse)
+library(here)
+library(janitor)
+library(plotly)
+library(lubridate)
+library(kableExtra)
+library(readxl)
+library(remotes)
+
+gdrive_data <- "G:/My Drive"
+
+```
+
+```{r}
+#install github package
+install_github("davidsjoberg/ggsankey")
+```
+
+```{r}
+#read in data
+sankey_data <- read_excel(here(gdrive_data, "/sankey_data.xlsx"))
+```
+
+```{r}
+ggplot(sankey_data, aes(x = x, 
+               next_x = next_x, 
+               node = node, 
+               next_node = next_node,
+               fill = factor(node))) +
+  geom_sankey()
+```
+

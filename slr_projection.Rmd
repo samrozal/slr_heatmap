@@ -23,7 +23,40 @@ gdrive_data <- "G:/My Drive"
 ```{r}
 #read in the data 
 
-slr_projections_old <- read_csv(here(gdrive_data, "/Sea_level_rise_projections.xlsx"))
+slr_projections_old <- read_excel(here(gdrive_data, "/Sea_level_rise_projections.xlsx"))
+slr_opc_sf <- read_excel(here(gdrive_data, "/sf_slr.xlsx"))
 
 ```
+
+```{r}
+ggplot(data=slr_projections_old, aes(x=year, y=sea_level_rise_projection))+
+  geom_point()
+```
+
+```{r}
+ggplot(data=slr_projections_old, aes(x=year, y=sea_level_rise_projection))+
+  geom_density2d_filled()
+```
+
+```{r}
+ggplot()+
+  geom_bin2d(data=slr_projections_old, aes(x=year, y=sea_level_rise_projection),binwidth = c(10 ,.5))+
+  geom_point(data=slr_opc_sf, aes(x=year, y=emissions, color=rcp))+
+  geom_smooth(data=slr_opc_sf, aes(x=year, y=emissions, color=rcp))
+```
+```{r}
+year_slr_proj <- slr_projections_old %>% 
+  group_by(year) %>%
+  summarize(mean_slr = mean(sea_level_rise_projection))
+
+year_slr_proj
+  
+  
+```
+```{r}
+kable(year_slr_proj, col.names = c("Year", "Mean SLR Projection (m)", caption = "Table. 1 Mean Sea Level rise Projections by Year")) %>% 
+  kable_styling()
+
+```
+
 
