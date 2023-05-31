@@ -22,15 +22,23 @@ gdrive_data <- "G:/My Drive"
 
 ```
 
-```{r}
-#install github package
-install_github("davidsjoberg/ggsankey")
-```
 
 ```{r}
 #read in data
 sankey_data <- read_excel(here(gdrive_data, "/sankey_data.xlsx"))
 ```
 
+```{r}
+VA_yes <- sankey_data %>% 
+  filter(Vulnerability_Assessment == "Yes")
 
+VA_no <- sankey_data %>% 
+  filter(Vulnerability_Assessment == "No")
 
+VA_in_part <- sankey_data %>% 
+  filter(Vulnerability_Assessment == "In part")
+```
+
+```{r}
+VA_yes_AP_yes <- VA_yes %>% 
+  filter(Adapatation_Plan == "Yes")
