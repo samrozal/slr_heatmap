@@ -32,12 +32,5 @@ install_github("davidsjoberg/ggsankey")
 sankey_data <- read_excel(here(gdrive_data, "/sankey_data.xlsx"))
 ```
 
-```{r}
-ggplot(sankey_data, aes(x = x, 
-               next_x = next_x, 
-               node = node, 
-               next_node = next_node,
-               fill = factor(node))) +
-  geom_sankey()
-```
+
 
