@@ -25,6 +25,8 @@ gdrive_data <- "G:/My Drive"
 
 slr_projections_old <- read_excel(here(gdrive_data, "/Sea_level_rise_projections.xlsx"))
 slr_opc_sf <- read_excel(here(gdrive_data, "/sf_slr.xlsx"))
+slr_projections_noaa <- read_excel(here(gdrive_data, "/slr_noaa_projections_transposed.xlsx"))
+opc_guidance <- read_excel(here(gdrive_data, "/OPC_guidance.xlsx"))
 
 ```
 
@@ -41,8 +43,8 @@ ggplot(data=slr_projections_old, aes(x=year, y=sea_level_rise_projection))+
 ```{r}
 ggplot()+
   geom_bin2d(data=slr_projections_old, aes(x=year, y=sea_level_rise_projection),binwidth = c(10 ,.5))+
-  geom_point(data=slr_opc_sf, aes(x=year, y=emissions, color=rcp))+
-  geom_smooth(data=slr_opc_sf, aes(x=year, y=emissions, color=rcp))
+  geom_point(data=slr_projections_noaa, aes(x=Year, y=SLR_projection, color=Scenario))+
+  geom_smooth(data=slr_projections_noaa, aes(x=Year, y=SLR_projection, color=Scenario))
 ```
 ```{r}
 year_slr_proj <- slr_projections_old %>% 
@@ -51,7 +53,6 @@ year_slr_proj <- slr_projections_old %>%
 
 year_slr_proj
   
-  
 ```
 ```{r}
 kable(year_slr_proj, col.names = c("Year", "Mean SLR Projection (m)", caption = "Table. 1 Mean Sea Level rise Projections by Year")) %>% 
@@ -59,4 +60,8 @@ kable(year_slr_proj, col.names = c("Year", "Mean SLR Projection (m)", caption = 
 
 ```
 
+```{r}
+ggplot()+
+  geom_bin2d(data=slr_projections_old, aes(x=year, y=sea_level_rise_projection),binwidth = c(10 ,.5))
+```
 
