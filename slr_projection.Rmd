@@ -32,7 +32,12 @@ opc_guidance <- read_excel(here(gdrive_data, "/OPC_guidance.xlsx"))
 
 ```{r}
 ggplot(data=slr_projections_old, aes(x=year, y=sea_level_rise_projection))+
-  geom_point()
+  geom_point()+
+   labs(x="Year", 
+       y="Sea Level rise Projection (Feet)")+
+  theme(plot.background = element_rect(fill="grey90")) +
+  theme(panel.background = element_rect(fill="grey100"))+
+  theme(legend.background= element_rect(fill= "grey100"))
 ```
 
 ```{r}
