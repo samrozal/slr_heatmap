@@ -43,9 +43,24 @@ ggplot(data=slr_projections_old, aes(x=year, y=sea_level_rise_projection))+
 ```{r}
 ggplot()+
   geom_bin2d(data=slr_projections_old, aes(x=year, y=sea_level_rise_projection),binwidth = c(10 ,.5))+
+  scale_fill_gradient(low="lightblue2", high = "navyblue")+
   geom_point(data=slr_projections_noaa, aes(x=Year, y=SLR_projection, color=Scenario))+
-  geom_smooth(data=slr_projections_noaa, aes(x=Year, y=SLR_projection, color=Scenario))
+  geom_smooth(data=slr_projections_noaa, aes(x=Year, y=SLR_projection, color=Scenario))+
+  geom_point(data=opc_guidance, aes(x=Year, y=State_Agency_Sea_Level_Rise_Action_Plan_Guidance), size=3)+
+  labs(x="Year", 
+       y="Sea Level rise Projection (Feet)")+
+  theme(plot.background = element_rect(fill="grey90")) +
+  theme(panel.background = element_rect(fill="grey100"))+
+  theme(legend.background= element_rect(fill= "grey100"))+
+  annotate("text", x= 2032, y=3, label=" State Agency 
+  Sea Level Rise Action 
+  Plan Guidance for 2030", size=3)+
+  annotate("text", x= 2116, y=6, label="State Agency 
+  Sea Level Rise Action 
+  Plan Guidance for 2030", size=3)
+  
 ```
+
 ```{r}
 year_slr_proj <- slr_projections_old %>% 
   group_by(year) %>%
