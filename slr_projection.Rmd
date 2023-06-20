@@ -93,7 +93,7 @@ ggplot()+
   geom_smooth(data=slr_projections_noaa, aes(x=Year, y=SLR_projection, color=Scenario))+
   geom_point(data=opc_guidance, aes(x=Year, y=State_Agency_Sea_Level_Rise_Action_Plan_Guidance), size=3)+
   labs(x="Year", 
-       y="Sea Level rise Projection (Feet)")+
+       y="Sea Level Rise Projection (Feet)")+
   theme(plot.background = element_rect(fill="grey90")) +
   theme(panel.background = element_rect(fill="grey100"))+
   theme(legend.background= element_rect(fill= "grey100"))+
@@ -111,7 +111,7 @@ ggplot()+
   geom_smooth(data=slr_projections_noaa, aes(x=Year, y=SLR_projection, color=Scenario))+
   geom_point(data=opc_guidance, aes(x=Year, y=State_Agency_Sea_Level_Rise_Action_Plan_Guidance), size=3)+
   labs(x="Year", 
-       y="Sea Level rise Projection (Feet)")+
+       y="Sea Level Rise Projection (Feet)")+
   theme(plot.background = element_rect(fill="grey90")) +
   theme(panel.background = element_rect(fill="grey100"))+
   theme(legend.background= element_rect(fill= "grey100"))+
