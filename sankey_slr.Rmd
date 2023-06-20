@@ -40,5 +40,92 @@ VA_in_part <- sankey_data %>%
 ```
 
 ```{r}
+VA_yes_summary <- VA_yes %>% 
+  group_by(Adaptation_Plan) %>% 
+  summarize(AP_count =n())
+
+VA_yes_summary
+
+VA_no_summary <- VA_no %>% 
+  group_by(Adaptation_Plan) %>% 
+  summarize(AP_count= n())
+
+VA_no_summary
+
+VA_in_part_summary <- VA_in_part %>% 
+  group_by(Adaptation_Plan) %>% 
+  summarize(AP_count = n())
+
+VA_in_part_summary 
+```
+
+```{r}
+AP_no <- sankey_data %>% 
+  filter(Adaptation_Plan == "No")
+
+AP_no_summary <- AP_no %>% 
+  group_by(LCP_SLR_Update) %>% 
+  summarize(LCP_count = n())
+
+AP_no_summary
+
+AP_yes <- sankey_data %>% 
+  filter(Adaptation_Plan == "Yes")
+
+AP_yes_summary <- AP_yes %>% 
+  group_by(LCP_SLR_Update) %>% 
+  summarize(LCP_count = n())
+
+AP_yes_summary
+
+AP_in_part<- sankey_data %>% 
+  filter(Adaptation_Plan == "In part")
+
+AP_in_part_summary <- AP_in_part %>% 
+  group_by(LCP_SLR_Update) %>% 
+  summarize(LCP_count = n())
+
+AP_in_part_summary
+
+
+```
+
+
+
+```{r}
 VA_yes_AP_yes <- VA_yes %>% 
-  filter(Adapatation_Plan == "Yes")
+  filter(Adaptation_Plan == "Yes")
+
+VA_no_AP_yes <- VA_no %>% 
+  filter(Adaptation_Plan == "Yes")
+
+VA_in_part_AP_yes <- VA_in_part %>% 
+  filter(Adaptation_Plan == "Yes")
+
+VA_no_AP_yes <- VA_no %>% 
+  filter(Adaptation_Plan == "Yes")
+
+VA_no_AP_no <- VA_no %>% 
+  filter(Adaptation_Plan == "No")
+
+VA_no_AP_in_part <- VA_no %>% 
+  filter(Adaptation_Plan == "In part")
+
+VA_in_part_AP_no <- VA_in_part %>% 
+  filter(Adaptation_Plan == "No")
+
+VA_yes_AP_no <- VA_yes %>% 
+  filter(Adaptation_Plan == "No")
+
+```
+
+```{r}
+LCP_VA_yes_AP_yes_summary <- VA_yes_AP_yes %>% 
+  group_by(LCP_SLR_Update) %>%
+  summarize(LCP_count= n())
+
+LCP_VA_yes_AP_yes_summary
+
+
+```
+
